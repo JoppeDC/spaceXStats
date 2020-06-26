@@ -32,3 +32,10 @@ services:
             - 'App\Repository\LandingPadRepository'
             - 'landpads'
             - 'App\Client\Response\LandingPad\LandingPad'
+
+    App\Repository\CrewRepository:
+        factory: ['@App\Repository\RepositoryFactory', 'create']
+        arguments:
+            - 'App\Repository\CrewRepository'
+            - 'crew'
+            - 'App\Client\Response\Crew\Crew'

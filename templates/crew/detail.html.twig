@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if crewMember is defined %}
+        {{ crewMember.name }}<br />
+        {% dump(crewMember) %}
+    {% endif %}
+{% endblock body %}

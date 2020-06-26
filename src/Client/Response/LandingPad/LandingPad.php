@@ -4,13 +4,8 @@ declare(strict_types=1);
 
 namespace App\Client\Response\LandingPad;
 
-use Symfony\Component\Serializer\Annotation\SerializedName;
-
 class LandingPad
 {
-    /**
-     * @SerializedName("name")
-     */
     private string $name = '';
     private string $fullName = '';
     private string $status = '';

@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if crewMembers is defined %}
+        {% for crewMember in crewMembers %}
+            <a href="{{ path('crew_detail', {'id': crewMember.id}) }}">{{ crewMember.name }}</a><br />
+        {% endfor %}
+    {% endif %}
+{% endblock body %}
