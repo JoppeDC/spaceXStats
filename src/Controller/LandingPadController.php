@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/landing_pads", name="landing_pads_")
+ * @Route("/landingpads", name="landing_pads_")
  */
 class LandingPadController extends AbstractController
 {
