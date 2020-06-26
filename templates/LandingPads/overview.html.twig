@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if pads is defined %}
+        {% for pad in pads %}
+            <a href="{{ path('landing_pads_detail', {'id': pad.id}) }}">{{ pad.name }}</a><br />
+        {% endfor %}
+    {% endif %}
+{% endblock body %}
