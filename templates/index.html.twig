@@ -58,7 +58,7 @@
                                     <b>Links: </b><br>
                                     {% for label, data in info.links %}
                                         <span class="pl-3">
-                                        <b>{{ label }}:</b> {{ data }}<br>
+                                            <b>{{ label }}:</b> <a href="{{ data }}">{{ data }}</a><br>
                                     </span>
                                     {% endfor %}
                                 </p>
