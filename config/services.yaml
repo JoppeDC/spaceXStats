@@ -53,3 +53,10 @@ services:
             - 'App\Repository\ShipRepository'
             - 'ships'
             - 'App\Client\Response\Ship\Ship'
+
+    App\Repository\RocketRepository:
+        factory: ['@App\Repository\RepositoryFactory', 'create']
+        arguments:
+            - 'App\Repository\RocketRepository'
+            - 'rockets'
+            - 'App\Client\Response\Rocket\Rocket'

@@ -1,0 +1,15 @@
+{% macro array_data(arrayData, span = 3) %}
+    {% import _self as macros %}
+    {% for label, data in arrayData %}
+        {% if data is iterable %}
+        <span class="pl-{{ span }}">
+            <b>{{ label | replace({'_': ' '})  }}:</b><br>
+        </span>
+            {{ macros.array_data(data, span + 1) }}
+        {% else %}
+            <span class="pl-{{ span }}">
+               <b>{{ label | replace({'_': ' '})  }}:</b> {% if data is same as(true) or data is same as(false) %}{{ data ? 'Yes':'No' }}{% else %}{{ data }}{% endif %}<br>
+            </span>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
