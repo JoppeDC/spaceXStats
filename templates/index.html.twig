@@ -3,10 +3,10 @@
 {% block header %}
     <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0">Home</h6>
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                    <li class="breadcrumb-item active"><a href="{{ path('index') }}"><i class="fas fa-home"></i></a></li>
+                    <li class="breadcrumb-item active"><a href="{{ path('index') }}"><i class="fas fa-home"></i></a>
+                    </li>
                 </ol>
             </nav>
         </div>
@@ -16,20 +16,57 @@
 {% block content %}
     <div class="row">
         <div class="col">
-                <div class="card">
-                    <div class="card-header border-0">
-                        <h3 class="mb-0">Welcome!</h3>
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Welcome!</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                The data on this website is fetched using the <a href="https://github.com/r-spacex/SpaceX-API">r-spaceX API</a>.
+                            </p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% if info is defined %}
+                                <p>{{ info.summary }}</p>
                                 <p>
-                                    This is a small sample website used to display API data.
+                                    <b>Name: </b>{{ info.name }}<br>
+                                    <b>Founder: </b>{{ info.founder }}<br>
+                                    <b>CEO: </b>{{ info.CEO }}<br>
+                                    <b>CTO: </b>{{ info.CTO }}<br>
+                                    <b>COO: </b>{{ info.COO }}<br>
+                                    <b>CTO Propulsion: </b>{{ info.ctoPropulsion }}<br>
+                                    <b>Founded: </b>{{ info.founded }}<br>
+                                    <b>Employees: </b>{{ info.employees }}<br>
+                                    <b>Vehicles: </b>{{ info.vehicles }}<br>
+                                    <b>Launch Sites: </b>{{ info.launchSites }}<br>
+                                    <b>Test Sites: </b>{{ info.testSites }}<br>
+                                    <b>valuation: </b>{{ info.valuation | format_currency('USD') }}<br>
                                 </p>
-                            </div>
+                                <p>
+                                    <b>Headquarters: </b><br>
+                                    {% for label, data in info.headquarters %}
+                                    <span class="pl-3">
+                                        <b>{{ label }}:</b> {{ data }}<br>
+                                    </span>
+                                    {% endfor %}
+                                </p>
+                                <p>
+                                    <b>Links: </b><br>
+                                    {% for label, data in info.links %}
+                                        <span class="pl-3">
+                                        <b>{{ label }}:</b> {{ data }}<br>
+                                    </span>
+                                    {% endfor %}
+                                </p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 {% endblock content %}

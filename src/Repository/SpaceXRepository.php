@@ -10,13 +10,13 @@ use Symfony\Contracts\Cache\ItemInterface;
 
 class SpaceXRepository implements SpaceXRepositoryInterface
 {
-    private const FIND_ALL_CACHE_EXTENSION = 'find_all';
-    private const FIND_ONE_BY_ID_CACHE_EXTENSION = 'find_one_by_id';
+    protected const FIND_ALL_CACHE_EXTENSION = 'find_all';
+    protected const FIND_ONE_BY_ID_CACHE_EXTENSION = 'find_one_by_id';
 
-    private SpaceXClient $client;
-    private string $resource;
-    private string $dataClass;
-    private FilesystemAdapter $adapter;
+    protected SpaceXClient $client;
+    protected string $resource;
+    protected string $dataClass;
+    protected FilesystemAdapter $adapter;
 
     public function __construct(SpaceXClient $client, string $resource, string $dataClass)
     {

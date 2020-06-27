@@ -39,3 +39,10 @@ services:
             - 'App\Repository\CrewRepository'
             - 'crew'
             - 'App\Client\Response\Crew\Crew'
+
+    App\Repository\CompanyInfoRepository:
+        factory: ['@App\Repository\RepositoryFactory', 'create']
+        arguments:
+            - 'App\Repository\CompanyInfoRepository'
+            - 'company'
+            - 'App\Client\Response\Company\Company'
