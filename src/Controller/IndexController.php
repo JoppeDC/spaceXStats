@@ -4,24 +4,17 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Repository\LandingPadRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
 {
-    private LandingPadRepository $landingPadRepository;
-
-    public function __construct(LandingPadRepository $landingPadRepository)
+    /**
+     * @Route("/", name="index")
+     */
+    public function index(Request $request)
     {
-        $this->landingPadRepository = $landingPadRepository;
-    }
-
-    public function __invoke(Request $request)
-    {
-        dump($this->landingPadRepository->findOneById('5e9e3032383ecb554034e7c9'));
-        die();
-
         return $this->render('base.html.twig');
     }
 }

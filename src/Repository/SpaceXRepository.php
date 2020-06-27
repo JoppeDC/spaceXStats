@@ -39,7 +39,7 @@ class SpaceXRepository implements SpaceXRepositoryInterface
 
     public function findOneById(string $id)
     {
-        return $this->adapter->get(sprintf('%s_%s', $this->resource, self::FIND_ONE_BY_ID_CACHE_EXTENSION),
+        return $this->adapter->get(sprintf('%s_%s_%s', $this->resource, self::FIND_ONE_BY_ID_CACHE_EXTENSION, $id),
             function (ItemInterface $item) use ($id) {
                 $item->expiresAfter(60 * 60 * 24);
 

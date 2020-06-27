@@ -6,6 +6,8 @@ namespace App\Client\Response\Crew;
 
 class Crew
 {
+    private const STATUS_ACTIVE = 'active';
+
     private string $name = '';
     private string $agency = '';
     private string $image = '';
@@ -82,5 +84,10 @@ class Crew
     public function setLaunches(array $launches): void
     {
         $this->launches = $launches;
+    }
+
+    public function isActive()
+    {
+        return self::STATUS_ACTIVE === $this->status;
     }
 }

@@ -1,8 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    {% if crewMember is defined %}
-        {{ crewMember.name }}<br />
-        {% dump(crewMember) %}
-    {% endif %}
-{% endblock body %}
+{% block header %}
+    <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                    <li class="breadcrumb-item"><a href="{{ path('index') }}"><i class="fas fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{{path('crew_overview')}}">Crew</a></li>
+                    <li class="breadcrumb-item active">{% if crewMember is defined %}{{ crewMember.name }}{% else %}Crew Member{% endif %}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            {% if crewMember is defined %}
+                {% dump(crewMember) %}
+                <div class="card">
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">{{ crewMember.name }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img class=" pb-3" src="{{ crewMember.image }}" alt="{{ crewMember.name }}" style="max-width: 100%;"/>
+                            </div>
+                            <div class="col-md-9">
+                                <p>
+                                    <b>Name: </b>{{ crewMember.name }}<br>
+                                    <b>Agency: </b>{{ crewMember.agency }}<br>
+                                    <b>Launches: </b>{{ crewMember.launches | length }}<br>
+                                    <b>Status: </b>{{ crewMember.status }}<br>
+                                    <b>Wikipedia: </b><a href="{{ crewMember.wikipedia }}">{{ crewMember.wikipedia }}</a><br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

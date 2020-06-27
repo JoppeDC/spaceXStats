@@ -1,8 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    {% if pad is defined %}
-        {{ pad.name }}<br />
-        {% dump(pad) %}
-    {% endif %}
-{% endblock body %}
+{% block header %}
+    <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                    <li class="breadcrumb-item"><a href="{{ path('index') }}"><i class="fas fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{{path('landing_pads_overview')}}">Landing Pads</a></li>
+                    <li class="breadcrumb-item active">{% if pad is defined %}{{ pad.fullName }}{% else %}Landing Pads{% endif %}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+{% endblock header %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            {% if pad is defined %}
+                <div class="card">
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">{{ pad.fullName }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>
+                                    <b>Name: </b>{{ pad.name }}<br>
+                                    <b>Full Name: </b>{{ pad.fullName }}<br>
+                                    <b>Status: </b>{{ pad.status }}<br>
+                                    <b>Type: </b>{{ pad.type }}<br>
+                                    <b>Location: </b>{{ pad.locality }}, {{ pad.region }}<br>
+                                    <b>Landing Attempts: </b>{{ pad.landingAttempts }}<br>
+                                    <b>Landing Successes: </b>{{ pad.landingSuccesses }}<br>
+                                    <b>Wikipedia: </b><a href="{{ pad.wikipedia }}">{{ pad.wikipedia }}</a><br>
+                                    <br>
+                                    <b>Description: </b><br />
+                                    {{ pad.details }}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <iframe height="100%" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?hl=en&amp;q={{ pad.latitude }}, {{ pad.longitude }}&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a style="visibility: hidden;" href='https://embedmaps.org/'>embed google map in wordpress</a><script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=32c1cc54a82b8933196b96b83b6119cddb7768a0'></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

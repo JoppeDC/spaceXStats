@@ -6,6 +6,8 @@ namespace App\Client\Response\LandingPad;
 
 class LandingPad
 {
+    private const STATUS_ACTIVE = 'active';
+
     private string $name = '';
     private string $fullName = '';
     private string $status = '';
@@ -159,5 +161,10 @@ class LandingPad
     public function setLaunches(array $launches): void
     {
         $this->launches = $launches;
+    }
+
+    public function isActive()
+    {
+        return self::STATUS_ACTIVE === $this->status;
     }
 }

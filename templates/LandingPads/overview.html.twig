@@ -1,9 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    {% if pads is defined %}
-        {% for pad in pads %}
-            <a href="{{ path('landing_pads_detail', {'id': pad.id}) }}">{{ pad.name }}</a><br />
-        {% endfor %}
-    {% endif %}
-{% endblock body %}
+{% block header %}
+
+    <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Landing Pads</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                    <li class="breadcrumb-item"><a href="{{ path('index') }}"><i class="fas fa-home"></i></a></li>
+                    <li class="breadcrumb-item active">Landing Pads</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Landing Pads</h3>
+                </div>
+                <!-- Light table -->
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Short Name</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Attempted landings</th>
+                            <th scope="col">Landing Success</th>
+                        </tr>
+                        </thead>
+                        <tbody class="list">
+                        {% if pads is defined %}
+                            {% for pad in pads %}
+                                <tr class="tr-clickable" onclick="window.location='{{ path("landing_pads_detail", {"id": pad.id}) }}'">
+                                    <th scope="row">
+                                        {{ pad.name }}
+                                    </th>
+                                    <td>
+                                        {{ pad.fullName }}
+                                    </td>
+                                    <td>
+                                        {{ pad.locality }}, {{ pad.region }}
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <i class="{% if pad.isActive %}bg-success{% else %}bg-warning{% endif %}"></i>
+                                            <span class="status">{{ pad.status }}</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        {{ pad.launches | length }}
+                                    </td>
+                                    <td>
+                                        {% if pad.landingAttempts > 0 %}
+                                        {% set landingPadSuccess = ((pad.landingSuccesses / pad.landingAttempts) * 100) | round %}
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <div class="progress">
+                                                    <div class="progress-bar {% if landingPadSuccess > 80 %}bg-success{% elseif landingPadSuccess < 60 %}bg-danger{% else %}bg-warning{% endif %}" role="progressbar" aria-valuenow="{{ landingPadSuccess }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ landingPadSuccess }}%;"></div>
+                                                </div>
+                                            </div>
+                                            <span class="completion ml-2">{{ landingPadSuccess }}%</span>
+                                        </div>
+                                        {% else %}
+                                            /
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                </a>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
