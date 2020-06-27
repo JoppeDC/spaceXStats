@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                    <li class="breadcrumb-item"><a href="{{ path('index') }}"><i class="fas fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{{path('ship_overview')}}">Ships</a></li>
+                    <li class="breadcrumb-item active">{% if crewMember is defined %}{{ crewMember.name }}{% else %}Crew Member{% endif %}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            {% if ship is defined %}
+                <div class="card">
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">{{ ship.name }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img class=" pb-3" src="{{ ship.image }}" alt="{{ ship.name }}" style="max-width: 100%;"/>
+                            </div>
+                            <div class="col-md-9">
+                                <p>
+                                    <b>Legacy ID: </b>{{ ship.legacyId }}<br>
+                                    <b>Name: </b>{{ ship.name }}<br>
+                                    <b>Type: </b>{{ ship.type }}<br>
+                                    <b>Year built: </b>{{ ship.yearBuilt }}<br>
+                                    <b>Roles: </b>{{ ship.roles|join(', ') }}<br>
+                                    <b>IMO: </b>{{ ship.imo }}<br>
+                                    <b>MMSI: </b>{{ ship.mmsi }}<br>
+                                    <b>ABS: </b>{{ ship.abs }}<br>
+                                    <b>Class: </b>{{ ship.class }}<br>
+                                    <b>Mass (kg): </b>{{ ship.massKg }}<br>
+                                    <b>Mass (lbs): </b>{{ ship.massLbs }}<br>
+                                    <b>Link: </b><a href="{{ ship.link }}">{{ ship.link }}</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

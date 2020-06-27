@@ -46,3 +46,10 @@ services:
             - 'App\Repository\CompanyInfoRepository'
             - 'company'
             - 'App\Client\Response\Company\Company'
+
+    App\Repository\ShipRepository:
+        factory: ['@App\Repository\RepositoryFactory', 'create']
+        arguments:
+            - 'App\Repository\ShipRepository'
+            - 'ships'
+            - 'App\Client\Response\Ship\Ship'
