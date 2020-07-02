@@ -1,5 +1,7 @@
 # SpaceX Stats
 
+![](https://github.com/JoppeDC/spaceXStats/workflows/Static%20analysis/badge.svg)
+
 This website was developed for fun to test out the Symfony Client, Serializer and Caching components. The data on this website is fetched using the [r-spacex API](https://github.com/r-spacex/SpaceX-API).
 
 The project is [available publicly](https://spacex.joppe.dev).
