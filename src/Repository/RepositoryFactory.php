@@ -15,7 +15,10 @@ class RepositoryFactory
         $this->client = $client;
     }
 
-    public function create(string $repo, string $resource, string $dataClass)
+    /**
+     * @return object|SpaceXRepositoryInterface
+     */
+    public function create(string $repo, string $resource, string $dataClass): object
     {
         return new $repo($this->client, $resource, $dataClass);
     }
