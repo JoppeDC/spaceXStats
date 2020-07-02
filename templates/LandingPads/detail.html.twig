@@ -27,6 +27,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <p>
+                                    {{ pad.details }}
+                                </p>
+                                <p>
                                     <b>Name: </b>{{ pad.name }}<br>
                                     <b>Full Name: </b>{{ pad.fullName }}<br>
                                     <b>Status: </b>{{ pad.status }}<br>
@@ -36,8 +39,7 @@
                                     <b>Landing Successes: </b>{{ pad.landingSuccesses }}<br>
                                     <b>Wikipedia: </b><a href="{{ pad.wikipedia }}">{{ pad.wikipedia }}</a><br>
                                     <br>
-                                    <b>Description: </b><br />
-                                    {{ pad.details }}
+
                                 </p>
                             </div>
                             <div class="col-md-6">

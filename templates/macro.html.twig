@@ -2,7 +2,7 @@
     {% import _self as macros %}
     {% for label, data in arrayData %}
         {% if data is iterable %}
-        <span class="pl-{{ span }}">
+        <span class="pl-{{ span }}" style="font-size: 1.1EM;">
             <b>{{ label | replace({'_': ' '})  }}:</b><br>
         </span>
             {{ macros.array_data(data, span + 1) }}

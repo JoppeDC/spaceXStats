@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Repository\ShipRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -23,11 +24,11 @@ class ShipController extends AbstractController
     /**
      * @Route("/", name="overview")
      */
-    public function index()
+    public function index(): Response
     {
         $landingPads = $this->shipRepository->findAll();
 
-        return $this->render('ships/overview.html.twig', [
+        return $this->render('Ships/overview.html.twig', [
             'ships' => $landingPads,
         ]);
     }
@@ -35,11 +36,11 @@ class ShipController extends AbstractController
     /**
      * @Route("/{id}", name="detail")
      */
-    public function detail(string $id)
+    public function detail(string $id): Response
     {
         $landingPad = $this->shipRepository->findOneById($id);
 
-        return $this->render('ships/detail.html.twig', [
+        return $this->render('Ships/detail.html.twig', [
             'ship' => $landingPad,
         ]);
     }

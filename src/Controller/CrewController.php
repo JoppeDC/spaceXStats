@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Repository\CrewRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -23,11 +24,11 @@ class CrewController extends AbstractController
     /**
      * @Route("/", name="overview")
      */
-    public function index()
+    public function index(): Response
     {
         $crewMembers = $this->crewRepository->findAll();
 
-        return $this->render('crew/overview.html.twig', [
+        return $this->render('Crew/overview.html.twig', [
             'crewMembers' => $crewMembers,
         ]);
     }
@@ -35,11 +36,11 @@ class CrewController extends AbstractController
     /**
      * @Route("/{id}", name="detail")
      */
-    public function detail(string $id)
+    public function detail(string $id): Response
     {
         $crewMember = $this->crewRepository->findOneById($id);
 
-        return $this->render('crew/detail.html.twig', [
+        return $this->render('Crew/detail.html.twig', [
             'crewMember' => $crewMember,
         ]);
     }

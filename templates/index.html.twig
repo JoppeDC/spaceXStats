@@ -24,44 +24,65 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p>
-                                The data on this website is fetched using the <a href="https://github.com/r-spacex/SpaceX-API">r-spaceX API</a>.
+                                This website was developed for fun to test out the Symfony Client, Serializer and Caching components.
+                                The data on this website is fetched using the <a
+                                        href="https://github.com/r-spacex/SpaceX-API">r-spaceX API</a>.
+                                <br/>
+                                I'm are not affiliated, associated, authorized, endorsed by, or in any way officially
+                                connected with Space Exploration Technologies Inc (SpaceX), or any of its subsidiaries
+                                or its affiliates. The names SpaceX as well as related names, marks, emblems and images
+                                are registered trademarks of their respective owners.
                             </p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             {% if info is defined %}
-                                <p>{{ info.summary }}</p>
-                                <p>
-                                    <b>Name: </b>{{ info.name }}<br>
-                                    <b>Founder: </b>{{ info.founder }}<br>
-                                    <b>CEO: </b>{{ info.CEO }}<br>
-                                    <b>CTO: </b>{{ info.CTO }}<br>
-                                    <b>COO: </b>{{ info.COO }}<br>
-                                    <b>CTO Propulsion: </b>{{ info.ctoPropulsion }}<br>
-                                    <b>Founded: </b>{{ info.founded }}<br>
-                                    <b>Employees: </b>{{ info.employees }}<br>
-                                    <b>Vehicles: </b>{{ info.vehicles }}<br>
-                                    <b>Launch Sites: </b>{{ info.launchSites }}<br>
-                                    <b>Test Sites: </b>{{ info.testSites }}<br>
-                                    <b>valuation: </b>{{ info.valuation | format_currency('USD') }}<br>
-                                </p>
-                                <p>
-                                    <b>Headquarters: </b><br>
-                                    {% for label, data in info.headquarters %}
+                            <p>{{ info.summary }}</p>
+                        </div>
+                        <div class="col-md-12">
+
+                            <h2>General info</h2>
+                        </div>
+                        <div class="col-lg-4">
+                            <p>
+                                <b>Name: </b>{{ info.name }}<br>
+                                <b>Founder: </b>{{ info.founder }}<br>
+                                <b>CEO: </b>{{ info.CEO }}<br>
+                                <b>CTO: </b>{{ info.CTO }}<br>
+                                <b>COO: </b>{{ info.COO }}<br>
+                                <b>CTO Propulsion: </b>{{ info.ctoPropulsion }}
+                            </p>
+                        </div>
+                        <div class="col-lg-4"><p>
+                                <b>Founded: </b>{{ info.founded }}<br>
+                                <b>Employees: </b>{{ info.employees }}<br>
+                                <b>Vehicles: </b>{{ info.vehicles }}<br>
+                                <b>Launch Sites: </b>{{ info.launchSites }}<br>
+                                <b>Test Sites: </b>{{ info.testSites }}<br>
+                                <b>valuation: </b>{{ info.valuation | format_currency('USD') }}
+                            </p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p>
+                                <b>Headquarters: </b><br>
+                                {% for label, data in info.headquarters %}
                                     <span class="pl-3">
                                         <b>{{ label }}:</b> {{ data }}<br>
                                     </span>
-                                    {% endfor %}
-                                </p>
-                                <p>
-                                    <b>Links: </b><br>
-                                    {% for label, data in info.links %}
-                                        <span class="pl-3">
-                                            <b>{{ label }}:</b> <a href="{{ data }}">{{ data }}</a><br>
+                                {% endfor %}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h2>Links</h2>
+                            <p>
+                                {% for label, data in info.links %}
+                                    <span class="pl-3">
+                                            <b>{{ label|replace({'_': ' '}) }}:</b> <a
+                                                href="{{ data }}">{{ data }}</a><br>
                                     </span>
-                                    {% endfor %}
-                                </p>
+                                {% endfor %}
+                            </p>
                             {% endif %}
                         </div>
                     </div>

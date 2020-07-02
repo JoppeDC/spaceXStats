@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Repository\RocketRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -23,11 +24,11 @@ class RocketController extends AbstractController
     /**
      * @Route("/", name="overview")
      */
-    public function index()
+    public function index(): Response
     {
         $rockets = $this->repository->findAll();
 
-        return $this->render('rockets/overview.html.twig', [
+        return $this->render('Rockets/overview.html.twig', [
             'rockets' => $rockets,
         ]);
     }
@@ -35,11 +36,11 @@ class RocketController extends AbstractController
     /**
      * @Route("/{id}", name="detail")
      */
-    public function detail(string $id)
+    public function detail(string $id): Response
     {
         $rocket = $this->repository->findOneById($id);
 
-        return $this->render('rockets/detail.html.twig', [
+        return $this->render('Rockets/detail.html.twig', [
             'rocket' => $rocket,
         ]);
     }
