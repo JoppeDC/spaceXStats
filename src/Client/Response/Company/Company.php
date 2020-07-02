@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Client\Response\Company;
 
-class Company
+use App\Client\Response\SpaceXResponseInterface;
+
+class Company implements SpaceXResponseInterface
 {
     private array $headquarters = [];
     private string $name = '';

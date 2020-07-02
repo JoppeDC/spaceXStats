@@ -4,25 +4,27 @@ declare(strict_types=1);
 
 namespace App\Client\Response\Ship;
 
-class Ship
+use App\Client\Response\SpaceXResponseInterface;
+
+class Ship implements SpaceXResponseInterface
 {
-    private ?string $legacyId;
-    private ?string $type;
-    private ?string $homePort;
-    private ?string $link;
-    private ?string $image;
-    private ?string $name;
-    private ?string $id;
-    private ?int $imo;
-    private ?int $mmsi;
-    private ?int $abs;
-    private ?int $class;
-    private ?int $massKg;
-    private ?int $massLbs;
-    private ?int $yearBuilt;
-    private ?array $roles;
-    private ?array $launches;
-    private ?bool $active;
+    private ?string $legacyId = null;
+    private ?string $type = null;
+    private ?string $homePort = null;
+    private ?string $link = null;
+    private ?string $image = null;
+    private ?string $name = null;
+    private ?string $id = null;
+    private ?int $imo = null;
+    private ?int $mmsi = null;
+    private ?int $abs = null;
+    private ?int $class = null;
+    private ?int $massKg = null;
+    private ?int $massLbs = null;
+    private ?int $yearBuilt = null;
+    private ?array $roles = null;
+    private ?array $launches = null;
+    private ?bool $active = null;
 
     public function getLegacyId(): ?string
     {

@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace App\Client\Response\Rocket;
 
-class Rocket
+use App\Client\Response\SpaceXResponseInterface;
+
+class Rocket implements SpaceXResponseInterface
 {
-    private ?string $name;
-    private ?string $type;
-    private ?string $firstFlight;
-    private ?string $country;
-    private ?string $company;
-    private ?string $wikipedia;
-    private ?string $description;
-    private ?string $id;
+    private ?string $name = null;
+    private ?string $type = null;
+    private ?string $firstFlight = null;
+    private ?string $country = null;
+    private ?string $company = null;
+    private ?string $wikipedia = null;
+    private ?string $description = null;
+    private ?string $id = null;
 
     private array $diameter = [];
     private array $mass = [];

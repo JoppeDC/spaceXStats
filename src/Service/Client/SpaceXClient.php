@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Client;
 
+use App\Client\Response\SpaceXResponseInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -23,6 +24,9 @@ class SpaceXClient
         $this->serializer = $serializer;
     }
 
+    /**
+     * @return SpaceXResponseInterface|SpaceXResponseInterface[]
+     */
     public function request(string $responseClass, string $action, string $method = 'GET', array $query = [], array $options = [])
     {
         //Todo: Catch exceptions

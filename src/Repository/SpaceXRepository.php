@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Client\Response\SpaceXResponseInterface;
 use App\Service\Client\SpaceXClient;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Contracts\Cache\ItemInterface;
@@ -37,6 +38,9 @@ class SpaceXRepository implements SpaceXRepositoryInterface
         );
     }
 
+    /**
+     * @return SpaceXResponseInterface|null
+     */
     public function findOneById(string $id)
     {
         return $this->adapter->get(sprintf('%s_%s_%s', $this->resource, self::FIND_ONE_BY_ID_CACHE_EXTENSION, $id),

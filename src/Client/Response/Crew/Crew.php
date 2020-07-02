@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Client\Response\Crew;
 
-class Crew
+use App\Client\Response\SpaceXResponseInterface;
+
+class Crew implements SpaceXResponseInterface
 {
     private const STATUS_ACTIVE = 'active';
 
@@ -86,7 +88,7 @@ class Crew
         $this->launches = $launches;
     }
 
-    public function isActive()
+    public function isActive(): bool
     {
         return self::STATUS_ACTIVE === $this->status;
     }

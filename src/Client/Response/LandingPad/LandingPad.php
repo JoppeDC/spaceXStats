@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Client\Response\LandingPad;
 
-class LandingPad
+use App\Client\Response\SpaceXResponseInterface;
+
+class LandingPad implements SpaceXResponseInterface
 {
     private const STATUS_ACTIVE = 'active';
 
@@ -163,7 +165,7 @@ class LandingPad
         $this->launches = $launches;
     }
 
-    public function isActive()
+    public function isActive(): bool
     {
         return self::STATUS_ACTIVE === $this->status;
     }

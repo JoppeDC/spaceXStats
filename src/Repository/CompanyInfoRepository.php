@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Client\Response\Company\Company;
+use App\Client\Response\SpaceXResponseInterface;
 use App\Service\Client\SpaceXClient;
 use Symfony\Contracts\Cache\ItemInterface;
 
@@ -23,7 +24,7 @@ class CompanyInfoRepository extends SpaceXRepository
         throw new \Exception('This method is not allowed');
     }
 
-    public function findOneById(string $id)
+    public function findOneById(string $id): ?SpaceXResponseInterface
     {
         throw new \Exception('This method is not allowed');
     }
